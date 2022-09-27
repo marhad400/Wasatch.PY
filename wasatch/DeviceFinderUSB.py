@@ -83,7 +83,6 @@ class DeviceFinderUSB(object):
         device_ids = []
         count = 0
         usb_back = libusb1.get_backend()
-        log.debug(f"calling poll with backend {usb_back}")
         for device in usb.core.find(find_all=True, backend=usb_back):
             count += 1
             vid = int(device.idVendor)
