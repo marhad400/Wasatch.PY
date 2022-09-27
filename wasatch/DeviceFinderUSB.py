@@ -9,7 +9,7 @@ if platform.system() == "Darwin":
     from CoreFoundation import *
 
 import usb
-import usb.backend.libusb0 as libusb0
+import usb.backend.libusb1 as libusb1
 
 log = logging.getLogger(__name__)
 
@@ -82,7 +82,9 @@ class DeviceFinderUSB(object):
     def bus_polling(self) -> list[DeviceID]:
         device_ids = []
         count = 0
-        for device in usb.core.find(find_all=True, backend=libusb0.get_backend()):
+        usb_back = libusb1.get_backend()
+        log.debug(f"calling poll with backend {usb_back}")
+        for device in usb.core.find(find_all=True, backend=usb_back):
             count += 1
             vid = int(device.idVendor)
             pid = int(device.idProduct)
