@@ -17,7 +17,7 @@ from wasatch.WasatchDevice      import WasatchDevice
 from wasatch.BalanceAcquisition import BalanceAcquisition
 from wasatch.RealUSBDevice      import RealUSBDevice
 
-VERSION = "2.3.0"
+VERSION = "3.2.6"
 
 log = logging.getLogger(__name__)
 
